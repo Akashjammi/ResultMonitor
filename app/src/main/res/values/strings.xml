@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">FacultyCE</string>
+    <string-array name="brew_array">
+        <item>Cappuccino</item>
+        <item>Espresso</item>
+        <item>Mocha</item>
+        <item>Caffè Americano</item>
+        <item>Cafe Zorro</item>
+    </string-array>
+</resources>
