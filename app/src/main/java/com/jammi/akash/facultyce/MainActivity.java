@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -26,8 +27,7 @@ EditText To;
 String  from;
 String too;
     private FirebaseAuth mAuth;
-
-
+    ProgressBar mProgressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,11 +35,12 @@ String too;
         From = findViewById(R.id.from);
         To = findViewById(R.id.to);
         mAuth = FirebaseAuth.getInstance();
-
+        mProgressBar=(ProgressBar)findViewById(R.id.progressBar);
         }
 
         void register(View view)
         {
+            mProgressBar.setVisibility(View.VISIBLE);
             from = From.getText().toString();
             too = To.getText().toString();
                 attemptRegistration();
@@ -62,10 +63,10 @@ String too;
 
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        Log.d("FlashChat", "createUser onComplete: " + task.isSuccessful());
+                        Log.d("FacultyCE", "createUser onComplete: " + task.isSuccessful());
 
                         if(!task.isSuccessful()){
-                            Log.d("FlashChat", "user creation failed");
+                            Log.d("FacultuCE", "user creation failed");
                             showErrorDialog("Registration attempt failed");
                         } else {
                             Intent intent = new Intent(MainActivity.this,homeActivity.class);

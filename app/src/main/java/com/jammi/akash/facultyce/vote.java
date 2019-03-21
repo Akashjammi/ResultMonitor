@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,32 +29,18 @@ public class vote extends AppCompatActivity {
 //    ListView listView ;
 TextView results;
 TextView Winner;
+TextView internet;
+ProgressBar mProgressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vote);
         results = (TextView) findViewById(R.id.results);
         Winner = findViewById(R.id.winner);
-//        ListView listView = (ListView) findViewById(R.id.list);
-//
-//        final ArrayList<String> mobileArray = new ArrayList<String>(asList(""));
-//
-//        final ArrayAdapter adapter = new ArrayAdapter<String>(this,
-//                android.R.layout.simple_list_item_1, mobileArray);
-//
-//
-//        listView.setAdapter(adapter);
+        internet = findViewById(R.id.internet);
+        mProgressBar=findViewById(R.id.progressBar2);
 
-//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//
-//                Toast.makeText(getApplicationContext(), "Hello " , Toast.LENGTH_LONG).show();
-//
-//            }
-//        });
-//
-        Intent intent =getIntent();
+        final Intent intent =getIntent();
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         final DatabaseReference myRef = database.getReference("votes");
@@ -65,30 +52,38 @@ TextView Winner;
                 @Override
                 public void onDataChange(DataSnapshot snapshot) {
 //                 mobileArray.add(snapshot.getValue().toString());
+                    mProgressBar.setVisibility(View.INVISIBLE);
+                    internet.setVisibility(View.INVISIBLE);
                     results.setText(snapshot.getValue().toString());
                     String votes = snapshot.getValue().toString();
                     String texti="";
                     int a=1;
-
+//                    int i=0;
                     int large=0;
-                    for(int i=0;i<votes.length();i++)
-                    {
-                        if(votes.charAt(i)=='[' || votes.charAt(i)==']')
+                    for( int i=3;i<votes.length()-1;i++)
+//                    while(i<=votes.length())
+                       {
+                        if(votes.charAt(i)=='[' || votes.charAt(i)==']'|| votes.charAt(i)=='{'|| votes.charAt(i)==']')
                         {
-
+                            i++;
                         }
                         if(votes.charAt(i)==',')
                         {
-                            texti +="\n" + "Nominie " +"\t "+ a + "\t Has got";
+                            texti +="\n" + "Nominee " +"\t ";
+//                            + a + "\t has got";
                             a++;
+//                            i++;
 
                         }
                         else{
-                            texti+= votes.charAt(i);
+//                            if(votes.charAt(i)!='=' && votes.charAt(i)!=a)
+                                texti+= votes.charAt(i) ;
+//                            else
+
                             if(large < Character.getNumericValue(votes.charAt(i)))
                             {
-                                large =Character.getNumericValue(votes.charAt(i));
-                                Winner.setText("Nominee " +String.valueOf(a-1)+ "\t has Won");
+//                                large =Character.getNumericValue(votes.charAt(i));
+//                                Winner.setText("Nominee " +String.valueOf(a-1)+ "\t has Won");
                             }
 
                         }
@@ -125,6 +120,22 @@ TextView Winner;
                 public void onDataChange(DataSnapshot snapshot) {
 //                    mobileArray.add(snapshot.getValue().toString());
 //                    adapter.notifyDataSetChanged();
+                    mProgressBar.setVisibility(View.INVISIBLE);
+                    internet.setVisibility(View.INVISIBLE);
+                    String users=snapshot.getValue().toString();
+//                    String newva="";
+//                    for(int i=1;i<users.length();i++)
+//                    {
+//                        if(users.charAt(i)=='=' && users.charAt(i)=='{' && users.charAt(i)=='}' )
+//                            i++;
+//                        if(users.charAt(i)==',')
+//                        {
+//                            newva+=users.charAt(i+1);
+//                        }
+//                        else {
+//                            newva+=users.charAt(i+1);
+//                        }
+//                    }
                     results.setText(snapshot.getValue().toString());
                 }
 
