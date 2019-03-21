@@ -8,35 +8,19 @@
 
     <TextView
         android:id="@+id/results"
-        android:layout_width="0dp"
-        android:layout_height="339dp"
-        android:layout_marginStart="9dp"
+        android:layout_width="371dp"
+        android:layout_height="482dp"
+        android:layout_marginStart="15dp"
         android:layout_marginTop="6dp"
         android:layout_marginEnd="9dp"
         android:layout_marginBottom="500dp"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.516"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/winner"
-        android:layout_width="228dp"
-        android:layout_height="76dp"
-        android:layout_marginStart="79dp"
-        android:layout_marginTop="197dp"
-        android:layout_marginEnd="104dp"
-        android:layout_marginBottom="69dp"
-        android:text="A moment please!"
-        android:textSize="25sp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/results" />
+        app:layout_constraintVertical_bias="0.007" />
 
     <ProgressBar
         android:id="@+id/progressBar2"
@@ -46,23 +30,24 @@
         android:layout_marginStart="169dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="170dp"
-        android:layout_marginBottom="128dp"
-        app:layout_constraintBottom_toTopOf="@+id/winner"
+        android:layout_marginBottom="28dp"
+        app:layout_constraintBottom_toTopOf="@+id/internet"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/results" />
 
     <TextView
         android:id="@+id/internet"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="116dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="117dp"
-        android:layout_marginBottom="81dp"
+        android:layout_height="19dp"
+        android:layout_marginStart="112dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="113dp"
+        android:layout_marginBottom="105dp"
         android:text="Your Internet isnt doing well"
         android:textSize="15sp"
-        app:layout_constraintBottom_toTopOf="@+id/winner"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/progressBar2" />

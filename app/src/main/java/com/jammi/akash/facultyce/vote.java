@@ -36,7 +36,7 @@ ProgressBar mProgressBar;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vote);
         results = (TextView) findViewById(R.id.results);
-        Winner = findViewById(R.id.winner);
+//        Winner = findViewById(R.id.winner);
         internet = findViewById(R.id.internet);
         mProgressBar=findViewById(R.id.progressBar2);
 
