@@ -113,8 +113,7 @@ ProgressBar mProgressBar;
                 }
             });
         }
-        if(intent.getBooleanExtra("voters",true)==true)
-        {
+        if(intent.getBooleanExtra("voters",true)==true) {
             uRef.child("DoneUsers").addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot snapshot) {
@@ -122,21 +121,23 @@ ProgressBar mProgressBar;
 //                    adapter.notifyDataSetChanged();
                     mProgressBar.setVisibility(View.INVISIBLE);
                     internet.setVisibility(View.INVISIBLE);
-                    String users=snapshot.getValue().toString();
-//                    String newva="";
-//                    for(int i=1;i<users.length();i++)
-//                    {
-//                        if(users.charAt(i)=='=' && users.charAt(i)=='{' && users.charAt(i)=='}' )
-//                            i++;
-//                        if(users.charAt(i)==',')
-//                        {
-//                            newva+=users.charAt(i+1);
-//                        }
-//                        else {
-//                            newva+=users.charAt(i+1);
-//                        }
+                    String users = snapshot.getValue().toString();
+                    String newva = "";
+                    for (int i = 0; i < users.length()-1; i++) {
+                        if (users.charAt(i) == '{')
+                            i++;
+                        if (users.charAt(i) == '=') {
+                            i = i + 11;
+                            newva+='\n';
+                        } else {
+                            newva += users.charAt(i);
+                        }
 //                    }
-                    results.setText(snapshot.getValue().toString());
+//                        results.setText(snapshot.getValue().toString());
+                        results.setText(newva);
+
+                    }
+                    Log.i("check",newva);
                 }
 
                 @Override
@@ -144,12 +145,4 @@ ProgressBar mProgressBar;
 
                 }
             });
-        }
-
-
-
-
-
-
-        }
-    }
+        }}}
